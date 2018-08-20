@@ -12,9 +12,9 @@ var NoteSection = React.createClass({
 
     loadNotesFromServer: function() {
         $.ajax({
-            url: '/genus/octopus/notes',
+            url: this.props.url,
             success: function (data) {
-                this.setState({notes: data.notes});
+                this.setState({notes: data.comments});
             }.bind(this)
         });
     },
@@ -36,7 +36,7 @@ var NoteList = React.createClass({
     render: function() {
         var noteNodes = this.props.notes.map(function(note) {
             return (
-                <NoteBox username={note.username} avatarUri={note.avatarUri} date={note.date} key={note.id}>{note.note}</NoteBox>
+                <NoteBox username={note.username} avatarUri={note.avatarUri} date={note.date} key={note.id}>{note.comment}</NoteBox>
             );
         });
 
