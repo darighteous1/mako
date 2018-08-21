@@ -2,7 +2,7 @@
 Flexbox Layout
 *******************************/
 
-.header, .navi, .sea-creature-container, .genus-details, .notes-container, .footer {
+.header, .navi, .recipe-container, .recipe-details, .notes-container, .footer {
     display: -webkit-flex;
     display: flex;
 }
@@ -20,7 +20,7 @@ Flexbox Layout
     min-height: 300px;
 }
 
-.sea-creature-container {
+.recipe-container {
     flex-direction: column;
     -webkit-align-items: center;
     align-items: center;
@@ -38,7 +38,7 @@ Flexbox Layout
 }
 
 @media all and (min-width: 700px) {
-    .sea-creature-container {
+    .recipe-container {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
@@ -84,6 +84,12 @@ body {
     height: 50px;
     width: auto;
     margin-top: 12px;
+    margin-left: 25px;
+}
+
+.logo {
+    color: #857872;
+    font-weight: bold;
 }
 
 .navi {
@@ -122,7 +128,7 @@ body {
     color: #000;
 }
 
-.genus-name {
+.recipe-name {
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;
@@ -133,11 +139,11 @@ body {
         min-width: 768px;
     }
 
-    .sea-creature-container {
+    .recipe-container {
         justify-content: flex-start;
     }
 
-    .genus-name {
+    .recipe-name {
         text-align: left;
         margin-left: 60px;
     }
@@ -147,20 +153,20 @@ body {
 /******************************
 BODY Styling
 *******************************/
-.genus-photo {
+.recipe-photo {
     width: 200px;
     height: 200px;
     border: 1px solid #000;
-    background: url('../images/octopus-rubescens.jpg');
+    background: url('../images/pasta.jpg');
     border-radius: 50%;
     margin-bottom: 30px;
 }
 
-.genus-details-list, .notes-header {
+.recipe-details-list, .notes-header {
     padding-left: 20px;
 }
 
-.genus-details-list > dt {
+.recipe-details-list > dt {
     text-transform: uppercase;
     padding-top: 10px;
 }
