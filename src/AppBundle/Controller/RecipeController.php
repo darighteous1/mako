@@ -21,9 +21,22 @@ class RecipeController extends Controller
      */
     public function showAction($recipeName)
     {
+        $funFact = 'There are more than *fifty types of pasta* in the world!';
+        $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
+        $key = md5($funFact);
+
+        if ($cache->contains($key)) {
+            $funFact = $cache->fetch($key);
+        } else {
+            sleep(1);
+            $funFact = $this->get('markdown.parser')
+                ->transform($funFact);
+            $cache->save($key, $funFact);
+        }
 
         return $this->render('recipe/show.html.twig', [
-            'name' => $recipeName
+            'name'      => $recipeName,
+            'funFact'   => $funFact
         ]);
     }
 
