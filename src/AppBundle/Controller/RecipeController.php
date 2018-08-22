@@ -18,8 +18,10 @@ class RecipeController extends Controller
 {
     /**
      * @Route("/recipe/{recipeName}")
+     * @param string $recipeName
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction($recipeName)
+    public function showAction(string $recipeName)
     {
         $funFact = 'There are more than *fifty types of pasta* in the world!';
         $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
@@ -28,7 +30,6 @@ class RecipeController extends Controller
         if ($cache->contains($key)) {
             $funFact = $cache->fetch($key);
         } else {
-            sleep(1);
             $funFact = $this->get('markdown.parser')
                 ->transform($funFact);
             $cache->save($key, $funFact);
